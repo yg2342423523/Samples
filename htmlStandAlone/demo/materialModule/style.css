@@ -1,0 +1,186 @@
+/*
+ * MaterialModule 样式文件
+ * 素材库管理模块的样式定义
+ */
+
+body {
+    font-family: "Microsoft YaHei", Arial, sans-serif;
+    font-size: 12px;
+    margin: 10px;
+    background-color: #f5f5f5;
+}
+
+fieldset {
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+legend {
+    font-weight: bold;
+    color: #333;
+    padding: 0 10px;
+}
+
+.mode-selector {
+    margin: 10px 0;
+}
+
+.mode-selector label {
+    display: inline-block;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.mode-selector input[type="radio"] {
+    margin-right: 5px;
+}
+
+.file-selector {
+    margin: 15px 0;
+}
+
+.file-selector button {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.file-selector button:hover {
+    background-color: #45a049;
+}
+
+.file-info {
+    background-color: #e8f4fd;
+    padding: 10px;
+    border-radius: 3px;
+    margin: 10px 0;
+    border-left: 4px solid #2196F3;
+}
+
+.material-list {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 10px;
+    background-color: white;
+}
+
+.material-item {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.material-item:hover {
+    background-color: #f0f0f0;
+}
+
+.material-item.selected {
+    background-color: #e3f2fd;
+    border-left: 3px solid #2196F3;
+}
+
+.controls {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.controls button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.controls button:hover {
+    background-color: #1976D2;
+}
+
+.controls button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.status-info {
+    background-color: #fff3cd;
+    border: 1px solid #ffeaa7;
+    color: #856404;
+    padding: 10px;
+    border-radius: 3px;
+    margin: 10px 0;
+}
+
+.error-info {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 3px;
+    margin: 10px 0;
+}
+
+.textwrapper {
+    margin: 10px 0;
+}
+
+.textwrapper textarea {
+    width: 100%;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 11px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #4CAF50;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* 模式特定样式 */
+.mode-random .material-item {
+    border-left: 3px solid #FF9800;
+}
+
+.mode-chapter .material-item {
+    border-left: 3px solid #9C27B0;
+}
+
+.mode-single .material-item {
+    border-left: 3px solid #4CAF50;
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+    .mode-selector label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    .controls button {
+        display: block;
+        width: 100%;
+        margin: 5px 0;
+    }
+}
