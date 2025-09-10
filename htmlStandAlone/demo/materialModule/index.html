@@ -1,0 +1,106 @@
+<!doctype html>
+<!--
+/*************************************************************************
+* MaterialModule - 素材库管理模块
+* 
+* 功能说明：
+* 1. 素材库选择和加载
+* 2. 三种处理模式：随机模式、章节模式、单文件模式
+* 3. 弹窗式文件选择，替代拖拽功能
+* 4. 与Prelude主程序的集成
+**************************************************************************/
+-->
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/jquery-ui.css">
+    <script src="../../lib/CSInterface-4.0.0.js"></script>
+    <script src="../../lib/jquery-1.9.1.js"></script>
+    <script src="../../lib/jquery-ui-1.10.3.js"></script>
+    <script src="./ext.js"></script>
+    <title>素材库管理模块 - MaterialModule</title>
+</head>
+
+<body onLoad="onLoaded();">
+    <!-- 模式选择区域 -->
+    <fieldset>
+        <legend>工作模式选择</legend>
+        <div class="mode-selector">
+            <label>
+                <input type="radio" name="workMode" value="random" checked> 
+                随机模式 - 随机处理素材文件
+            </label>
+            <label>
+                <input type="radio" name="workMode" value="chapter"> 
+                章节模式 - 按章节组织处理
+            </label>
+            <label>
+                <input type="radio" name="workMode" value="single"> 
+                单文件模式 - 处理单个文件
+            </label>
+        </div>
+        <div class="status-info" id="modeStatus">
+            当前模式：随机模式
+        </div>
+    </fieldset>
+
+    <!-- 素材库选择区域 -->
+    <fieldset>
+        <legend>素材库选择</legend>
+        <div class="file-selector">
+            <button onclick="selectMaterialLibrary()">选择素材库文件夹</button>
+            <button onclick="selectSingleFile()" id="singleFileBtn" style="display:none;">选择单个文件</button>
+            <button onclick="clearSelection()">清空选择</button>
+        </div>
+        <div class="file-info" id="selectionInfo" style="display:none;">
+            <p><strong>已选择路径：</strong><span id="selectedPath"></span></p>
+            <p><strong>文件数量：</strong><span id="fileCount">0</span></p>
+            <p><strong>支持格式：</strong>视频文件 (.mp4, .mov, .avi, .mxf), 音频文件 (.wav, .mp3, .aac)</p>
+        </div>
+    </fieldset>
+
+    <!-- 素材列表显示区域 -->
+    <fieldset>
+        <legend>素材文件列表</legend>
+        <div class="material-list" id="materialList">
+            <div style="text-align:center; color:#999; padding:20px;">
+                请先选择素材库或文件
+            </div>
+        </div>
+        
+        <!-- 进度条 -->
+        <div class="progress-bar" id="progressBar" style="display:none;">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        
+        <!-- 控制按钮 -->
+        <div class="controls">
+            <button onclick="processSelectedMaterials()" id="processBtn" disabled>开始处理素材</button>
+            <button onclick="previewMaterial()" id="previewBtn" disabled>预览选中素材</button>
+            <button onclick="refreshMaterialList()" id="refreshBtn" disabled>刷新列表</button>
+        </div>
+    </fieldset>
+
+    <!-- 处理结果和日志区域 -->
+    <fieldset>
+        <legend>处理结果与日志</legend>
+        <div class="textwrapper">
+            <p>操作日志：</p>
+            <textarea id="logOutput" rows="8" cols="*" readonly placeholder="系统日志将在此显示..."></textarea>
+            <p><button onclick="clearLog()">清空日志</button></p>
+        </div>
+    </fieldset>
+
+    <!-- API 消息区域 -->
+    <fieldset>
+        <legend>API 调用信息</legend>
+        <div class="textwrapper">
+            <p>API 消息记录：</p>
+            <textarea id="apiMessage" rows="6" cols="*" readonly placeholder="API调用信息将在此显示..."></textarea>
+            <p><button onclick="clearApiMessage()">清空API消息</button></p>
+        </div>
+    </fieldset>
+</body>
+</html>
